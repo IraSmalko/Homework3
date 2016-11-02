@@ -21,6 +21,12 @@
             android:label="@string/listView">
         </activity>
 
+        <activity
+            android:name=".JSONActivity"
+            android:label="JSON"
+            android:parentActivityName=".MainActivity">
+        </activity>
+
     </application>
 
 </manifest>

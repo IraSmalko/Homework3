@@ -20,6 +20,7 @@ public class MainActivity extends AppCompatActivity {
     private static ArrayList<ListItem> items = new ArrayList<>();
     private OnMenuItemClickListener onMenuItemClickListener;
     private static Context mContext;
+    public final static String EXTRA_MESSAGE = "com.metanit.eugene.helloapplication.MESSAGE";
 
     public static Context getContext() {
         return mContext;
@@ -103,16 +104,24 @@ public class MainActivity extends AppCompatActivity {
 
         adapter.setOnItemClickListener(new OnItemClickListener() {
             @Override
-            public void onItemClick(ListItem item) {
-                startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(item.getGooglePlusUrl())));
+            public void onItemClick(ListItem items) {
+
+                Intent intent = new Intent(mContext, JSONActivity.class);
+                String message = items.getGitUrl();
+                intent.putExtra(EXTRA_MESSAGE, message);
+                startActivity(intent);
             }
         });
         adapter.setOnButtonClickListener(new OnItemClickListener() {
             @Override
-            public void onItemClick(ListItem item) {
-                startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(item.getGitUrl())));
+            public void onItemClick(ListItem items) {
+                Intent intent = new Intent(mContext, JSONActivity.class);
+                String message = items.getGooglePlusUrl();
+                intent.putExtra(EXTRA_MESSAGE, message);
+                startActivity(intent);
             }
         });
+
         setOnMenuItemClickListener(new OnMenuItemClickListener() {
             @Override
             public void onMenuItemClick() {

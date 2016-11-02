@@ -1,7 +1,10 @@
 package com.exemple.android.myapplication;
 
 
+
+import android.content.Intent;
 import android.os.AsyncTask;
+import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 
 import org.json.JSONException;
@@ -12,6 +15,7 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
+
 
 public class Google extends AsyncTask<Void, Void, String>{
 
@@ -28,16 +32,21 @@ public class Google extends AsyncTask<Void, Void, String>{
 
     }
 
+    public void setMessage(String message) {
+        this.message = message;
+    }
     HttpURLConnection urlConnection = null;
         BufferedReader reader = null;
         String resultJson = "";
+        String message;
+
 
 
         @Override
         protected String doInBackground(Void... params) {
 
             try {
-                URL url = new URL("https://API.github.com/users/IraSmalko");
+                URL url = new URL( message);
 
                 urlConnection = (HttpURLConnection) url.openConnection();
                 urlConnection.setRequestMethod("GET");
@@ -84,4 +93,13 @@ public class Google extends AsyncTask<Void, Void, String>{
                 e.printStackTrace();
             }
         }
+    public class JSON extends AppCompatActivity {
+
+        Intent intent = getIntent();
+        private String message = intent.getStringExtra(MainActivity.EXTRA_MESSAGE);
+
+        public String getMessage() {
+            return message;
+        }
+    }
 }
