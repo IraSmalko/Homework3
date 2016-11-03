@@ -20,7 +20,9 @@ public class MainActivity extends AppCompatActivity {
     private static ArrayList<ListItem> items = new ArrayList<>();
     private OnMenuItemClickListener onMenuItemClickListener;
     private static Context mContext;
-    public final static String EXTRA_MESSAGE = "com.metanit.eugene.helloapplication.MESSAGE";
+    public static String urlToPassGit;
+    public static String urlToPassGoogle;
+    public static String urlToPass;
 
     public static Context getContext() {
         return mContext;
@@ -105,20 +107,15 @@ public class MainActivity extends AppCompatActivity {
         adapter.setOnItemClickListener(new OnItemClickListener() {
             @Override
             public void onItemClick(ListItem items) {
-
-                Intent intent = new Intent(mContext, JSONActivity.class);
-                String message = items.getGitUrl();
-                intent.putExtra(EXTRA_MESSAGE, message);
-                startActivity(intent);
+               urlToPass = urlToPassGoogle = items.getGooglePlusUrl();
+                startActivity(new Intent(mContext, JSONActivity.class));
             }
         });
         adapter.setOnButtonClickListener(new OnItemClickListener() {
             @Override
             public void onItemClick(ListItem items) {
-                Intent intent = new Intent(mContext, JSONActivity.class);
-                String message = items.getGooglePlusUrl();
-                intent.putExtra(EXTRA_MESSAGE, message);
-                startActivity(intent);
+                urlToPass = urlToPassGit = items.getGitUrl();
+                startActivity(new Intent(mContext, JSONActivity.class));
             }
         });
 
@@ -128,5 +125,15 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+    }
+
+    public static String getUrlToPassGoogle() {
+        return urlToPassGoogle;
+    }
+    public static String getUrlToPassGit() {
+        return urlToPassGit;
+    }
+    public static String getUrlToPass() {
+        return urlToPass;
     }
 }
