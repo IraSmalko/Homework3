@@ -32,7 +32,6 @@ import java.util.ArrayList;
 public class JSONActivity extends AppCompatActivity {
 
     ImageView mImageView;
-    Bitmap bitmap;
     TextView textView;
     String a;
 
@@ -48,7 +47,7 @@ public class JSONActivity extends AppCompatActivity {
         textView = (TextView) findViewById(R.id.Json);
     }
 
-    public  Bitmap getBitmapFromUrl(String src) {
+    public Bitmap getBitmapFromUrl(String src) {
         try {
             URL url = new URL(src);
             HttpURLConnection conection = (HttpURLConnection) url.openConnection();
@@ -63,7 +62,7 @@ public class JSONActivity extends AppCompatActivity {
         }
     }
 
-    class Google extends AsyncTask<Void, Void, String> {
+    class Google extends AsyncTask<Void, Void, Card> {
 
         public String LOG_TAG = "my_log";
         private String login;
@@ -86,8 +85,7 @@ public class JSONActivity extends AppCompatActivity {
         String resultJson = "";
 
         @Override
-        protected String doInBackground(Void... params) {
-
+        protected Card doInBackground(Void... params) {
             try {
                 URL url = new URL(MainActivity.getUrlToPass());
 
@@ -107,22 +105,14 @@ public class JSONActivity extends AppCompatActivity {
 
                 resultJson = buffer.toString();
 
+
             } catch (Exception e) {
                 e.printStackTrace();
             }
-            return resultJson;
-        }
-
-        @Override
-        protected void onPostExecute(String strJson) {
-            super.onPostExecute(strJson);
-
-            Log.d(LOG_TAG, strJson);
-
             if (urlToPass.equals(urlToPassGit)) {
 
                 try {
-                    JSONObject dataJsonObj = new JSONObject(strJson);
+                    JSONObject dataJsonObj = new JSONObject(resultJson);
 
                     login = dataJsonObj.getString("login");
                     avatar = dataJsonObj.getString("avatar_url");
@@ -134,7 +124,7 @@ public class JSONActivity extends AppCompatActivity {
                 }
             } else {
                 try {
-                    JSONObject dataJsonObj = new JSONObject(strJson);
+                    JSONObject dataJsonObj = new JSONObject(resultJson);
                     JSONArray name = dataJsonObj.getJSONArray("name");
 
                     login = name.getString(1);
@@ -145,8 +135,14 @@ public class JSONActivity extends AppCompatActivity {
                     e.printStackTrace();
                 }
             }
-            textView.setText(login);
-            mImageView.setImageBitmap(getBitmapFromUrl(avatar));
+            return new Card(login, getBitmapFromUrl(avatar));
+        }
+
+        @Override
+        protected void onPostExecute(Card card) {
+            super.onPostExecute(card);
+            textView.setText(card.getLogin());
+            mImageView.setImageBitmap(card.getAvatar());
         }
 
     }
