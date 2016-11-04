@@ -1,13 +1,15 @@
-package com.exemple.android.myapplication;
+package com.exemple.android.myapplication.listview;
 
 import android.content.Context;
-import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.TextView;
+
+import com.exemple.android.myapplication.recycler.OnItemClickListener;
+import com.exemple.android.myapplication.R;
 
 import java.util.ArrayList;
 

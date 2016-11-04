@@ -1,4 +1,4 @@
-package com.exemple.android.myapplication;
+package com.exemple.android.myapplication.listview;
 
 public class ListItem {
 

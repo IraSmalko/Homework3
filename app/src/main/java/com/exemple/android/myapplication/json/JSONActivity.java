@@ -1,32 +1,25 @@
-package com.exemple.android.myapplication;
+package com.exemple.android.myapplication.json;
 
-import android.app.ProgressDialog;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.provider.SyncStateContract;
-import android.support.v4.graphics.BitmapCompat;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.widget.ImageView;
-import android.widget.ListView;
 import android.widget.TextView;
 
-import org.json.JSONArray;
+import com.exemple.android.myapplication.listview.ListViewActivity;
+import com.exemple.android.myapplication.recycler.MainActivity;
+import com.exemple.android.myapplication.R;
+
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.BufferedReader;
-import java.io.File;
-import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
-import java.net.URI;
 import java.net.URL;
-import java.util.ArrayList;
 
 
 public class JSONActivity extends AppCompatActivity {
@@ -64,21 +57,17 @@ public class JSONActivity extends AppCompatActivity {
 
     class Google extends AsyncTask<Void, Void, Card> {
 
-        public String LOG_TAG = "my_log";
         private String login;
         private String avatar;
-        public String urlToPassGit = MainActivity.getUrlToPassGit();
-        public String urlToPassGoogle = MainActivity.getUrlToPassGoogle();
-        public String urlToPass = MainActivity.getUrlToPass();
+        private String urlToPassGit = MainActivity.getUrlToPassGit();
+        private String urlToPassGoogle = MainActivity.getUrlToPassGoogle();
+        private String urlToPass = MainActivity.getUrlToPass();
+        private String urlToPassList = ListViewActivity.getUrlToPassList();
+        private String urlToPassGitList = ListViewActivity.getUrlToPassGitList();
+        private String urlToPassGoogleList = ListViewActivity.getUrlToPassGoogleList();
+        private String urL = (urlToPass != null) ? urlToPass:urlToPassList;
+        private String urlGit = (urlToPassGit != null) ? urlToPassGit:urlToPassGitList;
 
-        public String getAvatar() {
-            return avatar;
-        }
-
-        public String getLogin() {
-            return login;
-
-        }
 
         HttpURLConnection urlConnection = null;
         BufferedReader reader = null;
@@ -87,7 +76,7 @@ public class JSONActivity extends AppCompatActivity {
         @Override
         protected Card doInBackground(Void... params) {
             try {
-                URL url = new URL(MainActivity.getUrlToPass());
+                URL url = new URL(urL);
 
                 urlConnection = (HttpURLConnection) url.openConnection();
                 urlConnection.setRequestMethod("GET");
@@ -109,28 +98,25 @@ public class JSONActivity extends AppCompatActivity {
             } catch (Exception e) {
                 e.printStackTrace();
             }
-            if (urlToPass.equals(urlToPassGit)) {
+            if (urlToPass.equals(urlGit)) {
 
                 try {
                     JSONObject dataJsonObj = new JSONObject(resultJson);
 
                     login = dataJsonObj.getString("login");
                     avatar = dataJsonObj.getString("avatar_url");
-                    Log.d(LOG_TAG, "Имя: " + login);
-                    Log.d(LOG_TAG, "avatar: " + avatar);
-
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
             } else {
                 try {
                     JSONObject dataJsonObj = new JSONObject(resultJson);
-                    JSONArray name = dataJsonObj.getJSONArray("name");
-
-                    login = name.getString(1);
-                    avatar = name.getString(2);
-                    Log.d(LOG_TAG, "Имя: " + login);
-                    Log.d(LOG_TAG, "avatar: " + avatar);
+                    JSONObject  name = dataJsonObj.getJSONObject("name");
+                    JSONObject  imageData = dataJsonObj.getJSONObject("image");
+                    String familyName = name.getString("familyName");
+                    String givenName = name.getString("givenName");
+                    avatar = imageData.getString("url");
+                    login = familyName + " " + givenName;
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }

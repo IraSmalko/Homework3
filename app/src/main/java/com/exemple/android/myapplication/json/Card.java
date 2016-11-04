@@ -1,4 +1,4 @@
-package com.exemple.android.myapplication;
+package com.exemple.android.myapplication.json;
 
 
 import android.graphics.Bitmap;

@@ -9,7 +9,7 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MainActivity">
+        <activity android:name=".recycler.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -17,14 +17,14 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".ListViewActivity"
+        <activity android:name=".listview.ListViewActivity"
             android:label="@string/listView">
         </activity>
 
         <activity
-            android:name=".JSONActivity"
+            android:name=".json.JSONActivity"
             android:label="JSON"
-            android:parentActivityName=".MainActivity">
+            android:parentActivityName=".recycler.MainActivity">
         </activity>
 
     </application>

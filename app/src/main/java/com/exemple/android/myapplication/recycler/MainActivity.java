@@ -1,15 +1,18 @@
-package com.exemple.android.myapplication;
+package com.exemple.android.myapplication.recycler;
 
 import android.content.Context;
 import android.content.Intent;
-import android.net.Uri;
-import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.Menu;
 import android.view.MenuItem;
+
+import com.exemple.android.myapplication.R;
+import com.exemple.android.myapplication.json.JSONActivity;
+import com.exemple.android.myapplication.listview.ListItem;
+import com.exemple.android.myapplication.listview.ListViewActivity;
 
 import java.util.ArrayList;
 
@@ -20,9 +23,9 @@ public class MainActivity extends AppCompatActivity {
     private static ArrayList<ListItem> items = new ArrayList<>();
     private OnMenuItemClickListener onMenuItemClickListener;
     private static Context mContext;
-    public static String urlToPassGit;
-    public static String urlToPassGoogle;
-    public static String urlToPass;
+    private static String urlToPassGit;
+    private static String urlToPassGoogle;
+    private static String urlToPass;
 
     public static Context getContext() {
         return mContext;
@@ -54,7 +57,6 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
 
         items.add(new ListItem(getResources().getString(R.string.name1),
                 getResources().getString(R.string.gplus1), getResources().getString(R.string.git), getResources().getString(R.string.gitUrl1)));
@@ -124,9 +126,7 @@ public class MainActivity extends AppCompatActivity {
             public void onMenuItemClick() {
             }
         });
-
     }
-
     public static String getUrlToPassGoogle() {
         return urlToPassGoogle;
     }

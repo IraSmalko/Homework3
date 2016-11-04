@@ -1,4 +1,4 @@
-package com.exemple.android.myapplication;
+package com.exemple.android.myapplication.recycler;
 
 public interface OnMenuItemClickListener {
     void onMenuItemClick ();
