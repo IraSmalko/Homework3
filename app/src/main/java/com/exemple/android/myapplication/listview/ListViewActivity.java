@@ -18,10 +18,7 @@ public class ListViewActivity extends Activity {
     private static ArrayList<ListItem> items = new ArrayList<>();
     private ListView mListView;
     private CustomListViewAdapter adapter;
-    private static Context mContext;
-    private static String urlToPassGitList;
-    private static String urlToPassGoogleList;
-    private static String urlToPassList;
+    private static String urlToPass;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,28 +33,20 @@ public class ListViewActivity extends Activity {
         adapter.setOnItemClickListener(new OnItemClickListener() {
             @Override
             public void onItemClick(ListItem item) {
-                urlToPassList = urlToPassGoogleList = item.getGooglePlusUrl();
-                startActivity(new Intent(mContext, JSONActivity.class));
+                urlToPass = item.getGooglePlusUrl();
+                startActivity(new Intent(MainActivity.getContext(), JSONActivity.class));
             }
         });
         adapter.setOnButtonClickListener(new OnItemClickListener() {
             @Override
             public void onItemClick(ListItem item) {
-                urlToPassList = urlToPassGitList = item.getGitUrl();
-                startActivity(new Intent(mContext, JSONActivity.class));
+                urlToPass = item.getGitUrl();
+                startActivity(new Intent(MainActivity.getContext(), JSONActivity.class));
             }
         });
-        mListView
-                .setAdapter(adapter);
-
+        mListView.setAdapter(adapter);
     }
-    public static String getUrlToPassGoogleList() {
-        return urlToPassGoogleList;
-    }
-    public static String getUrlToPassGitList() {
-        return urlToPassGitList;
-    }
-    public static String getUrlToPassList() {
-        return urlToPassList;
+    public static String getUrlToPass() {
+        return urlToPass;
     }
 }

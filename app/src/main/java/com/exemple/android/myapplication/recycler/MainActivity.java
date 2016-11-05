@@ -23,15 +23,15 @@ public class MainActivity extends AppCompatActivity {
     private static ArrayList<ListItem> items = new ArrayList<>();
     private OnMenuItemClickListener onMenuItemClickListener;
     private static Context mContext;
-    private static String urlToPassGit;
-    private static String urlToPassGoogle;
     private static String urlToPass;
 
     public static Context getContext() {
         return mContext;
     }
 
-    public OnMenuItemClickListener getOnMenuItemClickListener() {return onMenuItemClickListener;}
+    public static String getUrlToPass() {
+        return urlToPass;
+    }
 
     public void setOnMenuItemClickListener(OnMenuItemClickListener onMenuItemClickListener){
         this.onMenuItemClickListener = onMenuItemClickListener;
@@ -52,7 +52,6 @@ public class MainActivity extends AppCompatActivity {
     public static ArrayList<ListItem> getItems() {
         return items;
     }
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -109,14 +108,14 @@ public class MainActivity extends AppCompatActivity {
         adapter.setOnItemClickListener(new OnItemClickListener() {
             @Override
             public void onItemClick(ListItem items) {
-               urlToPass = urlToPassGoogle = items.getGooglePlusUrl();
+               urlToPass = items.getGooglePlusUrl();
                 startActivity(new Intent(mContext, JSONActivity.class));
             }
         });
         adapter.setOnButtonClickListener(new OnItemClickListener() {
             @Override
             public void onItemClick(ListItem items) {
-                urlToPass = urlToPassGit = items.getGitUrl();
+                urlToPass = items.getGitUrl();
                 startActivity(new Intent(mContext, JSONActivity.class));
             }
         });
@@ -126,14 +125,5 @@ public class MainActivity extends AppCompatActivity {
             public void onMenuItemClick() {
             }
         });
-    }
-    public static String getUrlToPassGoogle() {
-        return urlToPassGoogle;
-    }
-    public static String getUrlToPassGit() {
-        return urlToPassGit;
-    }
-    public static String getUrlToPass() {
-        return urlToPass;
     }
 }

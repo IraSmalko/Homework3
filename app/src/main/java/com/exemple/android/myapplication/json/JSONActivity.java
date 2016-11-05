@@ -26,15 +26,14 @@ public class JSONActivity extends AppCompatActivity {
 
     ImageView mImageView;
     TextView textView;
-    String a;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.json_activity);
 
-        Google google = new Google();
-        google.execute();
+        JSONmaker jsoNmaker = new JSONmaker();
+        jsoNmaker.execute();
 
         mImageView = (ImageView) findViewById(R.id.Json_imageView);
         textView = (TextView) findViewById(R.id.Json);
@@ -43,10 +42,10 @@ public class JSONActivity extends AppCompatActivity {
     public Bitmap getBitmapFromUrl(String src) {
         try {
             URL url = new URL(src);
-            HttpURLConnection conection = (HttpURLConnection) url.openConnection();
-            conection.setDoInput(true);
-            conection.connect();
-            InputStream input = conection.getInputStream();
+            HttpURLConnection connection = (HttpURLConnection) url.openConnection();
+            connection.setDoInput(true);
+            connection.connect();
+            InputStream input = connection.getInputStream();
             Bitmap myBitmap = BitmapFactory.decodeStream(input);
             return myBitmap;
         } catch (Exception e) {
@@ -55,62 +54,53 @@ public class JSONActivity extends AppCompatActivity {
         }
     }
 
-    class Google extends AsyncTask<Void, Void, Card> {
-
-        private String login;
-        private String avatar;
-        private String urlToPassGit = MainActivity.getUrlToPassGit();
-        private String urlToPassGoogle = MainActivity.getUrlToPassGoogle();
-        private String urlToPass = MainActivity.getUrlToPass();
-        private String urlToPassList = ListViewActivity.getUrlToPassList();
-        private String urlToPassGitList = ListViewActivity.getUrlToPassGitList();
-        private String urlToPassGoogleList = ListViewActivity.getUrlToPassGoogleList();
-        private String urL = (urlToPass != null) ? urlToPass:urlToPassList;
-        private String urlGit = (urlToPassGit != null) ? urlToPassGit:urlToPassGitList;
-
-
-        HttpURLConnection urlConnection = null;
-        BufferedReader reader = null;
-        String resultJson = "";
+    class JSONmaker extends AsyncTask<Void, Void, Card> {
 
         @Override
         protected Card doInBackground(Void... params) {
-            try {
-                URL url = new URL(urL);
+            String passedUrl = MainActivity.getUrlToPass();
+            String urlToJSON = (passedUrl != null) ? passedUrl : ListViewActivity.getUrlToPass();
+            return parseJSON(urlToJSON);
+        }
 
-                urlConnection = (HttpURLConnection) url.openConnection();
+        public String loadJSON(String urlToJSON) {
+            String resultJson = new String();
+            try {
+                URL url = new URL(urlToJSON);
+                HttpURLConnection urlConnection = (HttpURLConnection) url.openConnection();
                 urlConnection.setRequestMethod("GET");
                 urlConnection.connect();
 
                 InputStream inputStream = urlConnection.getInputStream();
                 StringBuffer buffer = new StringBuffer();
-
-                reader = new BufferedReader(new InputStreamReader(inputStream));
+                BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream));
 
                 String line;
                 while ((line = reader.readLine()) != null) {
                     buffer.append(line);
                 }
-
                 resultJson = buffer.toString();
-
-
             } catch (Exception e) {
                 e.printStackTrace();
             }
-            if (urlToPass.equals(urlGit)) {
+            return resultJson;
+        }
 
+        public Card parseJSON(String urlToJSON) {
+            String login = new String();
+            String avatar = new String();
+            if(urlToJSON.contains("git.com")) {
                 try {
-                    JSONObject dataJsonObj = new JSONObject(resultJson);
-
+                    JSONObject dataJsonObj = new JSONObject(loadJSON(urlToJSON));
                     login = dataJsonObj.getString("login");
                     avatar = dataJsonObj.getString("avatar_url");
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
-            } else {
+            }
+            if (urlToJSON.contains("plus.com")){
                 try {
-                    JSONObject dataJsonObj = new JSONObject(resultJson);
+                    JSONObject dataJsonObj = new JSONObject(loadJSON(urlToJSON));
                     JSONObject  name = dataJsonObj.getJSONObject("name");
                     JSONObject  imageData = dataJsonObj.getJSONObject("image");
                     String familyName = name.getString("familyName");
@@ -123,7 +113,6 @@ public class JSONActivity extends AppCompatActivity {
             }
             return new Card(login, getBitmapFromUrl(avatar));
         }
-
         @Override
         protected void onPostExecute(Card card) {
             super.onPostExecute(card);
