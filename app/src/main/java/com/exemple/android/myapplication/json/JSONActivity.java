@@ -89,7 +89,7 @@ public class JSONActivity extends AppCompatActivity {
         public Card parseJSON(String urlToJSON) {
             String login = new String();
             String avatar = new String();
-            if(urlToJSON.contains("git.com")) {
+            if(urlToJSON.contains("https://API.github.com")) {
                 try {
                     JSONObject dataJsonObj = new JSONObject(loadJSON(urlToJSON));
                     login = dataJsonObj.getString("login");
@@ -98,7 +98,7 @@ public class JSONActivity extends AppCompatActivity {
                     e.printStackTrace();
                 }
             }
-            if (urlToJSON.contains("plus.com")){
+            if (urlToJSON.contains("https://www.googleapis.com/plus/v1/people")){
                 try {
                     JSONObject dataJsonObj = new JSONObject(loadJSON(urlToJSON));
                     JSONObject  name = dataJsonObj.getJSONObject("name");
