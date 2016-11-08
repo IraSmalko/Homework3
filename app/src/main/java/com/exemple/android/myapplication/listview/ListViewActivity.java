@@ -28,20 +28,20 @@ public class ListViewActivity extends Activity {
         items = MainActivity.getItems();
         mListView = (ListView) findViewById(R.id.list_activity_view);
 
-        adapter = new CustomListViewAdapter(MainActivity.getContext(), items);
+        adapter = new CustomListViewAdapter(getApplicationContext(), items);
 
         adapter.setOnItemClickListener(new OnItemClickListener() {
             @Override
             public void onItemClick(ListItem item) {
                 urlToPass = item.getGooglePlusUrl();
-                startActivity(new Intent(MainActivity.getContext(), JSONActivity.class));
+                startActivity(new Intent(getApplicationContext(), JSONActivity.class));
             }
         });
         adapter.setOnButtonClickListener(new OnItemClickListener() {
             @Override
             public void onItemClick(ListItem item) {
                 urlToPass = item.getGitUrl();
-                startActivity(new Intent(MainActivity.getContext(), JSONActivity.class));
+                startActivity(new Intent(getApplicationContext(), JSONActivity.class));
             }
         });
         mListView.setAdapter(adapter);

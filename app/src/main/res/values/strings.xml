@@ -68,5 +68,9 @@
 
     <string name="action">action</string>
     <string name="listView">listView</string>
-
+    <string name="fotoActivity">FotoActivity</string>
+    <string name="foto">Foto</string>
+    <string name="getingFoto">getingFoto</string>
+    <string name="gallery">GALLERY</string>
+    <string name="camera">CAMERA</string>
 </resources>
