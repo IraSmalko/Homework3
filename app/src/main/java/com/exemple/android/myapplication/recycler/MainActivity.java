@@ -1,6 +1,5 @@
 package com.exemple.android.myapplication.recycler;
 
-import android.content.Context;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -9,7 +8,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.Menu;
 import android.view.MenuItem;
 
-import com.exemple.android.myapplication.FotoActivity;
+import com.exemple.android.myapplication.PhotoActivity;
 import com.exemple.android.myapplication.R;
 import com.exemple.android.myapplication.json.JSONActivity;
 import com.exemple.android.myapplication.listview.ListItem;
@@ -46,7 +45,7 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(new Intent(this, ListViewActivity.class));
                 return true;
             case R.id.foto:
-                startActivity(new Intent(this, FotoActivity.class));
+                startActivity(new Intent(this, PhotoActivity.class));
                 return true;
         }
         return super.onOptionsItemSelected(item);

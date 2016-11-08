@@ -6,7 +6,7 @@
         android:orderInCategory="1"/>
     <item
         android:id="@+id/foto"
-        android:title="@string/foto"
+        android:title="@string/photo"
         android:orderInCategory="2"/>
 
 </menu>

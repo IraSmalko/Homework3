@@ -26,8 +26,8 @@
             android:label="JSON"
             android:parentActivityName=".recycler.MainActivity">
         </activity>
-        <activity android:name=".FotoActivity"
-            android:label="@string/fotoActivity">
+        <activity android:name=".PhotoActivity"
+            android:label="@string/photoActivity">
         </activity>
 
     </application>
