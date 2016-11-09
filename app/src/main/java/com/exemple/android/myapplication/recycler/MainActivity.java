@@ -1,12 +1,16 @@
 package com.exemple.android.myapplication.recycler;
 
+import android.content.BroadcastReceiver;
+import android.content.Context;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Toast;
 
 import com.exemple.android.myapplication.PhotoActivity;
 import com.exemple.android.myapplication.R;
@@ -23,6 +27,7 @@ public class MainActivity extends AppCompatActivity {
     private static ArrayList<ListItem> items = new ArrayList<>();
     private OnMenuItemClickListener onMenuItemClickListener;
     private static String urlToPass;
+    private HeadSetReceiver myReceiver;
 
     public static String getUrlToPass() {
         return urlToPass;
@@ -58,6 +63,7 @@ public class MainActivity extends AppCompatActivity {
         protected void onCreate (Bundle savedInstanceState){
             super.onCreate(savedInstanceState);
             setContentView(R.layout.activity_main);
+            myReceiver = new HeadSetReceiver();
 
             items.add(new ListItem(getResources().getString(R.string.name1),
                     getResources().getString(R.string.gplus1), getResources().getString(R.string.git), getResources().getString(R.string.gitUrl1)));
@@ -127,4 +133,24 @@ public class MainActivity extends AppCompatActivity {
                 }
             });
         }
+    public void onResume() {
+        IntentFilter filter = new IntentFilter(Intent.ACTION_HEADSET_PLUG);
+        registerReceiver(myReceiver, filter);
+        super.onResume();
+    }
+    private class HeadSetReceiver extends BroadcastReceiver {
+        @Override public void onReceive(Context context, Intent intent) {
+            if (intent.getAction().equals(Intent.ACTION_HEADSET_PLUG)) {
+                int state = intent.getIntExtra("state", -1);
+                switch (state) {
+                    case 0:
+                        Toast.makeText(context, "Headset unplugged", Toast.LENGTH_SHORT).show();
+                        break;
+                    case 1:
+                        Toast.makeText(context, "Headset plugged", Toast.LENGTH_SHORT).show();
+                        break;
+                }
+            }
+        }
+    }
     }
