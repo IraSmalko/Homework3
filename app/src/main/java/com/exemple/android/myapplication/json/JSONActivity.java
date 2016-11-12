@@ -2,9 +2,11 @@ package com.exemple.android.myapplication.json;
 
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -20,6 +22,7 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.util.Arrays;
 
 
 public class JSONActivity extends AppCompatActivity {
@@ -27,16 +30,26 @@ public class JSONActivity extends AppCompatActivity {
     ImageView mImageView;
     TextView textView;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.json_activity);
 
-        JSONmaker jsoNmaker = new JSONmaker();
-        jsoNmaker.execute();
+        if (getIntent() != null) {
+            Uri data = getIntent().getData();
+            if (data != null) {
+                String url = data.toString();
+                url = url.replace("github.com", "API.github.com");
+                MainActivity.setUrlToPass(url);
+            }
+        }
 
         mImageView = (ImageView) findViewById(R.id.Json_imageView);
         textView = (TextView) findViewById(R.id.Json);
+
+        JSONmaker jsoNmaker = new JSONmaker();
+        jsoNmaker.execute();
     }
 
     public Bitmap getBitmapFromUrl(String src) {

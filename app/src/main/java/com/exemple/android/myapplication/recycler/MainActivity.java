@@ -8,6 +8,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Toast;
@@ -31,6 +32,10 @@ public class MainActivity extends AppCompatActivity {
 
     public static String getUrlToPass() {
         return urlToPass;
+    }
+
+    public static void setUrlToPass(String url) {
+        urlToPass = url;
     }
 
     public void setOnMenuItemClickListener(OnMenuItemClickListener onMenuItemClickListener) {
