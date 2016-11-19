@@ -9,10 +9,11 @@ import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.exemple.android.myapplication.R;
 import com.exemple.android.myapplication.listview.ListViewActivity;
 import com.exemple.android.myapplication.recycler.MainActivity;
-import com.exemple.android.myapplication.R;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -22,7 +23,6 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
-import java.util.Arrays;
 
 
 public class JSONActivity extends AppCompatActivity {
@@ -30,26 +30,36 @@ public class JSONActivity extends AppCompatActivity {
     ImageView mImageView;
     TextView textView;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.json_activity);
+        boolean flag = false;
 
         if (getIntent() != null) {
             Uri data = getIntent().getData();
             if (data != null) {
                 String url = data.toString();
-                url = url.replace("github.com", "API.github.com");
-                MainActivity.setUrlToPass(url);
+                if (url.contains("github.com")) {
+                    url = url.replace("github.com", "API.github.com/users");
+                    MainActivity.setUrlToPass(url);
+                }else if (url.contains("plus.google.com/1")) {
+                    url = url.replace("plus.google.com", "www.googleapis.com/plus/v1/people");
+                    url = url + "?key=AIzaSyC7xbtBoEVQUwWWcDjENu0Z11mSyTeaijE";
+                    MainActivity.setUrlToPass(url);
+                }else {
+                    flag = true;
+                    Toast.makeText(this, "некоректне посилання", Toast.LENGTH_SHORT).show();
+                }
             }
         }
 
         mImageView = (ImageView) findViewById(R.id.Json_imageView);
         textView = (TextView) findViewById(R.id.Json);
-
+        if(!flag){
         JSONmaker jsoNmaker = new JSONmaker();
         jsoNmaker.execute();
+        }
     }
 
     public Bitmap getBitmapFromUrl(String src) {
@@ -102,7 +112,7 @@ public class JSONActivity extends AppCompatActivity {
         public Card parseJSON(String urlToJSON) {
             String login = new String();
             String avatar = new String();
-            if(urlToJSON.contains("https://API.github.com")) {
+            if (urlToJSON.contains("https://API.github.com")) {
                 try {
                     JSONObject dataJsonObj = new JSONObject(loadJSON(urlToJSON));
                     login = dataJsonObj.getString("login");
@@ -111,11 +121,11 @@ public class JSONActivity extends AppCompatActivity {
                     e.printStackTrace();
                 }
             }
-            if (urlToJSON.contains("https://www.googleapis.com/plus/v1/people")){
+            if (urlToJSON.contains("https://www.googleapis.com/plus/v1/people")) {
                 try {
                     JSONObject dataJsonObj = new JSONObject(loadJSON(urlToJSON));
-                    JSONObject  name = dataJsonObj.getJSONObject("name");
-                    JSONObject  imageData = dataJsonObj.getJSONObject("image");
+                    JSONObject name = dataJsonObj.getJSONObject("name");
+                    JSONObject imageData = dataJsonObj.getJSONObject("image");
                     String familyName = name.getString("familyName");
                     String givenName = name.getString("givenName");
                     avatar = imageData.getString("url");
@@ -126,6 +136,7 @@ public class JSONActivity extends AppCompatActivity {
             }
             return new Card(login, getBitmapFromUrl(avatar));
         }
+
         @Override
         protected void onPostExecute(Card card) {
             super.onPostExecute(card);
