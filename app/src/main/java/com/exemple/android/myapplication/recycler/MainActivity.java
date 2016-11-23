@@ -4,11 +4,10 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Toast;
@@ -18,8 +17,14 @@ import com.exemple.android.myapplication.R;
 import com.exemple.android.myapplication.json.JSONActivity;
 import com.exemple.android.myapplication.listview.ListItem;
 import com.exemple.android.myapplication.listview.ListViewActivity;
+import com.exemple.android.myapplication.retrofit.GetBitmap;
+import com.exemple.android.myapplication.retrofit.GooglePlusApiInterface;
+import com.exemple.android.myapplication.retrofit.data.GooglePlusUser;
 
 import java.util.ArrayList;
+
+import retrofit.Callback;
+import retrofit.Response;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -29,6 +34,7 @@ public class MainActivity extends AppCompatActivity {
     private OnMenuItemClickListener onMenuItemClickListener;
     private static String urlToPass;
     private HeadSetReceiver myReceiver;
+    private static String avatarUrl;
 
     public static String getUrlToPass() {
         return urlToPass;
@@ -37,6 +43,10 @@ public class MainActivity extends AppCompatActivity {
     public static void setUrlToPass(String url) {
         urlToPass = url;
     }
+
+    public static String getAvatarUrl() { return avatarUrl;  }
+
+    public static void setAvatarUrl(String url) { avatarUrl = url;  }
 
     public void setOnMenuItemClickListener(OnMenuItemClickListener onMenuItemClickListener) {
         this.onMenuItemClickListener = onMenuItemClickListener;
@@ -121,10 +131,20 @@ public class MainActivity extends AppCompatActivity {
         adapter.setOnItemClickListener(new OnItemClickListener() {
             @Override
             public void onItemClick(ListItem items) {
-                urlToPass = items.getGooglePlusUrl();
-                startActivity(new Intent(getApplicationContext(), JSONActivity.class));
+                GooglePlusApiInterface.Factory.getService().getUser(items.getGooglePlusUrl()).enqueue(new Callback<GooglePlusUser>() {
+                @Override
+                public void onResponse(Response<GooglePlusUser> response) {
+                    urlToPass = response.body().getDisplayName();
+                    avatarUrl = response.body().getImage().getUrl();
+                    startActivity(new Intent(getApplicationContext(), JSONActivity.class));
+                }
+                @Override
+                public void onFailure(Throwable t) {
+                }
+            });
             }
         });
+
         adapter.setOnButtonClickListener(new OnItemClickListener() {
             @Override
             public void onItemClick(ListItem items) {
@@ -159,5 +179,19 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         }
+    }
+    @Override
+    protected void onSaveInstanceState(Bundle saveInstanceState) {
+        super.onSaveInstanceState(saveInstanceState);
+    }
+
+    @Override
+    protected void onRestoreInstanceState(Bundle savedInstanceState) {
+        super.onRestoreInstanceState(savedInstanceState);
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
     }
 }

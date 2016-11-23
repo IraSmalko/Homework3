@@ -49,4 +49,18 @@ public class ListViewActivity extends Activity {
     public static String getUrlToPass() {
         return urlToPass;
     }
+    @Override
+    protected void onSaveInstanceState(Bundle saveInstanceState) {
+        super.onSaveInstanceState(saveInstanceState);
+    }
+
+    @Override
+    protected void onRestoreInstanceState(Bundle savedInstanceState) {
+        super.onRestoreInstanceState(savedInstanceState);
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+    }
 }

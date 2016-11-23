@@ -1,27 +1,21 @@
 package com.exemple.android.myapplication;
 
 
-import android.content.BroadcastReceiver;
-import android.content.Context;
 import android.content.Intent;
-import android.content.IntentFilter;
 import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
-import android.widget.Toast;
 
 import java.io.IOException;
 
 public class PhotoActivity extends AppCompatActivity {
     static final int GALLERY_REQUEST = 1;
     private final int CAMERA_RESULT = 0;
-
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -42,9 +36,8 @@ public class PhotoActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent cameraIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
                 startActivityForResult(cameraIntent, CAMERA_RESULT);
-                }
+            }
         });
-
     }
 
     @Override
@@ -71,6 +64,21 @@ public class PhotoActivity extends AppCompatActivity {
                     imageView.setImageBitmap(thumbnailBitmap);
                 }
         }
+    }
+
+    @Override
+    protected void onSaveInstanceState(Bundle saveInstanceState) {
+        super.onSaveInstanceState(saveInstanceState);
+    }
+
+    @Override
+    protected void onRestoreInstanceState(Bundle savedInstanceState) {
+        super.onRestoreInstanceState(savedInstanceState);
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
     }
 
 }

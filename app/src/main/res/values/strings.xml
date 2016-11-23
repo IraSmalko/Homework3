@@ -22,7 +22,7 @@
     <string name="name20">Лимарь Володимир</string>
     <string name="hello_world">hello_world</string>
 
-    <string name="gplus1">https://www.googleapis.com/plus/v1/people/117765348335292685488?key=AIzaSyC7xbtBoEVQUwWWcDjENu0Z11mSyTeaijE</string>
+    <string name="gplus1">117765348335292685488</string>
     <string name="gplus2">https://www.googleapis.com/plus/v1/people/110313151428733681846?key=AIzaSyC7xbtBoEVQUwWWcDjENu0Z11mSyTeaijE</string>
     <string name="gplus3">https://www.googleapis.com/plus/v1/people/103145064185261665176?key=AIzaSyC7xbtBoEVQUwWWcDjENu0Z11mSyTeaijE</string>
     <string name="gplus4">https://www.googleapis.com/plus/v1/people/111088051831122657934?key=AIzaSyC7xbtBoEVQUwWWcDjENu0Z11mSyTeaijE</string>
