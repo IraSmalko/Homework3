@@ -10,8 +10,15 @@ import com.exemple.android.myapplication.recycler.MainActivity;
 import com.exemple.android.myapplication.recycler.OnItemClickListener;
 import com.exemple.android.myapplication.R;
 import com.exemple.android.myapplication.json.JSONActivity;
+import com.exemple.android.myapplication.retrofit.GitApiInterface;
+import com.exemple.android.myapplication.retrofit.GooglePlusApiInterface;
+import com.exemple.android.myapplication.retrofit.data.GithubUser;
+import com.exemple.android.myapplication.retrofit.data.GooglePlusUser;
 
 import java.util.ArrayList;
+
+import retrofit.Callback;
+import retrofit.Response;
 
 
 public class ListViewActivity extends Activity {
@@ -19,6 +26,8 @@ public class ListViewActivity extends Activity {
     private ListView mListView;
     private CustomListViewAdapter adapter;
     private static String urlToPass;
+    private static String urlToPassGit;
+    private static String urlToPassGoogle;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,23 +41,29 @@ public class ListViewActivity extends Activity {
 
         adapter.setOnItemClickListener(new OnItemClickListener() {
             @Override
-            public void onItemClick(ListItem item) {
-                urlToPass = item.getGooglePlusUrl();
+            public void onItemClick(ListItem items) {
+                urlToPass = urlToPassGoogle = items.getGooglePlusUrl();
                 startActivity(new Intent(getApplicationContext(), JSONActivity.class));
             }
         });
         adapter.setOnButtonClickListener(new OnItemClickListener() {
             @Override
-            public void onItemClick(ListItem item) {
-                urlToPass = item.getGitUrl();
+            public void onItemClick(ListItem items) {
+                urlToPass = urlToPassGit = items.getGitUrl();
                 startActivity(new Intent(getApplicationContext(), JSONActivity.class));
             }
         });
         mListView.setAdapter(adapter);
     }
-    public static String getUrlToPass() {
-        return urlToPass;
+    public static String getUrlToPass() { return urlToPass;  }
+
+    public static String getUrlToPassGit() {
+        return urlToPassGit;
     }
+    public static String getUrlToPassGoogle() {
+        return urlToPassGoogle;
+    }
+
     @Override
     protected void onSaveInstanceState(Bundle saveInstanceState) {
         super.onSaveInstanceState(saveInstanceState);

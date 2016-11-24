@@ -23,48 +23,48 @@
     <string name="hello_world">hello_world</string>
 
     <string name="gplus1">117765348335292685488</string>
-    <string name="gplus2">https://www.googleapis.com/plus/v1/people/110313151428733681846?key=AIzaSyC7xbtBoEVQUwWWcDjENu0Z11mSyTeaijE</string>
-    <string name="gplus3">https://www.googleapis.com/plus/v1/people/103145064185261665176?key=AIzaSyC7xbtBoEVQUwWWcDjENu0Z11mSyTeaijE</string>
-    <string name="gplus4">https://www.googleapis.com/plus/v1/people/111088051831122657934?key=AIzaSyC7xbtBoEVQUwWWcDjENu0Z11mSyTeaijE</string>
-    <string name="gplus5">https://www.googleapis.com/plus/v1/people/108482088578879737406?key=AIzaSyC7xbtBoEVQUwWWcDjENu0Z11mSyTeaijE</string>
-    <string name="gplus6">https://www.googleapis.com/plus/v1/people/109719711261293841416?key=AIzaSyC7xbtBoEVQUwWWcDjENu0Z11mSyTeaijE</string>
-    <string name="gplus7">https://www.googleapis.com/plus/v1/people/103130382244571139113?key=AIzaSyC7xbtBoEVQUwWWcDjENu0Z11mSyTeaijE</string>
-    <string name="gplus8">https://www.googleapis.com/plus/v1/people/110288437168771810002?key=AIzaSyC7xbtBoEVQUwWWcDjENu0Z11mSyTeaijE</string>
-    <string name="gplus9">https://www.googleapis.com/plus/v1/people/101427598085441575303?key=AIzaSyC7xbtBoEVQUwWWcDjENu0Z11mSyTeaijE</string>
-    <string name="gplus10">https://www.googleapis.com/plus/v1/people/102197104589432395674?key=AIzaSyC7xbtBoEVQUwWWcDjENu0Z11mSyTeaijE</string>
-    <string name="gplus11">https://www.googleapis.com/plus/v1/people/107382407687723634701?key=AIzaSyC7xbtBoEVQUwWWcDjENu0Z11mSyTeaijE</string>
-    <string name="gplus12">https://www.googleapis.com/plus/v1/people/106331812587299981536?key=AIzaSyC7xbtBoEVQUwWWcDjENu0Z11mSyTeaijE</string>
-    <string name="gplus13">https://www.googleapis.com/plus/v1/people/113994208318508685327?key=AIzaSyC7xbtBoEVQUwWWcDjENu0Z11mSyTeaijE</string>
-    <string name="gplus14">https://www.googleapis.com/plus/v1/people/107910188078571144657?key=AIzaSyC7xbtBoEVQUwWWcDjENu0Z11mSyTeaijE</string>
-    <string name="gplus15">https://www.googleapis.com/plus/v1/people/113264746064942658029?key=AIzaSyC7xbtBoEVQUwWWcDjENu0Z11mSyTeaijE</string>
-    <string name="gplus16">https://www.googleapis.com/plus/v1/people/111389859649705526831?key=AIzaSyC7xbtBoEVQUwWWcDjENu0Z11mSyTeaijE</string>
-    <string name="gplus17">https://www.googleapis.com/plus/v1/people/108231952557339738781?key=AIzaSyC7xbtBoEVQUwWWcDjENu0Z11mSyTeaijE</string>
-    <string name="gplus18">https://www.googleapis.com/plus/v1/people/106553086375805780685?key=AIzaSyC7xbtBoEVQUwWWcDjENu0Z11mSyTeaijE</string>
-    <string name="gplus19">https://www.googleapis.com/plus/v1/people/110087894894730430086?key=AIzaSyC7xbtBoEVQUwWWcDjENu0Z11mSyTeaijE</string>
-    <string name="gplus20">https://www.googleapis.com/plus/v1/people/109227554979939957830?key=AIzaSyC7xbtBoEVQUwWWcDjENu0Z11mSyTeaijE</string>
+    <string name="gplus2">110313151428733681846</string>
+    <string name="gplus3">103145064185261665176</string>
+    <string name="gplus4">111088051831122657934</string>
+    <string name="gplus5">108482088578879737406</string>
+    <string name="gplus6">109719711261293841416</string>
+    <string name="gplus7">103130382244571139113</string>
+    <string name="gplus8">110288437168771810002</string>
+    <string name="gplus9">101427598085441575303</string>
+    <string name="gplus10">102197104589432395674</string>
+    <string name="gplus11">107382407687723634701</string>
+    <string name="gplus12">106331812587299981536</string>
+    <string name="gplus13">113994208318508685327</string>
+    <string name="gplus14">107910188078571144657</string>
+    <string name="gplus15">113264746064942658029</string>
+    <string name="gplus16">111389859649705526831</string>
+    <string name="gplus17">108231952557339738781</string>
+    <string name="gplus18">106553086375805780685</string>
+    <string name="gplus19">110087894894730430086</string>
+    <string name="gplus20">109227554979939957830</string>
 
     <string name="git">git</string>
 
-     <string name="gitUrl1">https://API.github.com/users/vlads0n</string>
-    <string name="gitUrl2">https://API.github.com/users/RedGeekPanda</string>
-    <string name="gitUrl3">https://API.github.com/users/BogdanRybak1996</string>
-    <string name="gitUrl4">https://API.github.com/users/ivleshch</string>
-    <string name="gitUrl5">https://API.github.com/users/sakurov</string>
-    <string name="gitUrl6">https://API.github.com/users/RuslanVolovyk</string>
-    <string name="gitUrl7">https://API.github.com/users/dashakdsr</string>
-    <string name="gitUrl8">https://API.github.com/users/RyabkoAndrew</string>
-    <string name="gitUrl9">https://API.github.com/users/YevheniiSytnyk</string>
-    <string name="gitUrl10">https://API.github.com/users/lyfm</string>
-    <string name="gitUrl11">https://API.github.com/users/HelenCool</string>
-    <string name="gitUrl12">https://API.github.com/users/rmigal</string>
-    <string name="gitUrl13">https://API.github.com/users/IraSmalko</string>
-    <string name="gitUrl14">https://API.github.com/users/gvv-ua</string>
-    <string name="gitUrl15">https://API.github.com/users/zhdanov-ek</string>
-    <string name="gitUrl16">https://API.github.com/users/dogfight81</string>
-    <string name="gitUrl17">https://API.github.com/users/IhorPakharenko</string>
-    <string name="gitUrl18">https://API.github.com/users/new15</string>
-    <string name="gitUrl19">https://API.github.com/users/NikPikhmanets</string>
-    <string name="gitUrl20">https://API.github.com/users/VovanNec</string>
+     <string name="gitUrl1">vlads0n</string>
+    <string name="gitUrl2">RedGeekPanda</string>
+    <string name="gitUrl3">BogdanRybak1996</string>
+    <string name="gitUrl4">ivleshch</string>
+    <string name="gitUrl5">sakurov</string>
+    <string name="gitUrl6">RuslanVolovyk</string>
+    <string name="gitUrl7">dashakdsr</string>
+    <string name="gitUrl8">RyabkoAndrew</string>
+    <string name="gitUrl9">YevheniiSytnyk</string>
+    <string name="gitUrl10">lyfm</string>
+    <string name="gitUrl11">HelenCool</string>
+    <string name="gitUrl12">rmigal</string>
+    <string name="gitUrl13">IraSmalko</string>
+    <string name="gitUrl14">gvv-ua</string>
+    <string name="gitUrl15">zhdanov-ek</string>
+    <string name="gitUrl16">dogfight81</string>
+    <string name="gitUrl17">IhorPakharenko</string>
+    <string name="gitUrl18">new15</string>
+    <string name="gitUrl19">NikPikhmanets</string>
+    <string name="gitUrl20">VovanNec</string>
 
     <string name="action">action</string>
     <string name="listView">listView</string>
@@ -73,4 +73,11 @@
     <string name="getingPhoto">getingPhoto</string>
     <string name="gallery">GALLERY</string>
     <string name="camera">CAMERA</string>
+
+    <string name="text">Введіть дані для створення нового контакту</string>
+    <string name="name">name</string>
+    <string name="namber">namber</string>
+    <string name="create">create</string>
+    <string name="contacts">contacts</string>
+    <string name="newcontact">new Contact</string>
 </resources>

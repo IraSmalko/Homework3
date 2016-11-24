@@ -8,5 +8,13 @@
         android:id="@+id/foto"
         android:title="@string/photo"
         android:orderInCategory="2"/>
+    <item
+        android:id="@+id/contacts"
+        android:title="@string/contacts"
+        android:orderInCategory="3"/>
+    <item
+        android:id="@+id/newcontact"
+        android:title="@string/newcontact"
+        android:orderInCategory="4"/>
 
 </menu>
