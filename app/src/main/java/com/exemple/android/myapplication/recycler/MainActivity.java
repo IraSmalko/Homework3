@@ -16,18 +16,11 @@ import com.exemple.android.myapplication.PhotoActivity;
 import com.exemple.android.myapplication.R;
 import com.exemple.android.myapplication.contacts.AllContacts;
 import com.exemple.android.myapplication.contacts.NewContactUsing;
-import com.exemple.android.myapplication.json.JSONActivity;
+import com.exemple.android.myapplication.retrofit.RetrofitActivity;
 import com.exemple.android.myapplication.listview.ListItem;
 import com.exemple.android.myapplication.listview.ListViewActivity;
-import com.exemple.android.myapplication.retrofit.GitApiInterface;
-import com.exemple.android.myapplication.retrofit.GooglePlusApiInterface;
-import com.exemple.android.myapplication.retrofit.data.GithubUser;
-import com.exemple.android.myapplication.retrofit.data.GooglePlusUser;
 
 import java.util.ArrayList;
-
-import retrofit.Callback;
-import retrofit.Response;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -134,7 +127,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onItemClick(ListItem items) {
                 urlToPass = urlToPassGoogle = items.getGooglePlusUrl();
-                startActivity(new Intent(getApplicationContext(), JSONActivity.class));
+                startActivity(new Intent(getApplicationContext(), RetrofitActivity.class));
             }
         });
 
@@ -142,7 +135,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onItemClick(ListItem items) {
                 urlToPass = urlToPassGit = items.getGitUrl();
-                startActivity(new Intent(getApplicationContext(), JSONActivity.class));
+                startActivity(new Intent(getApplicationContext(), RetrofitActivity.class));
             }
         });
 

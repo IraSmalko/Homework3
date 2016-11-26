@@ -1,4 +1,4 @@
-package com.exemple.android.myapplication.json;
+package com.exemple.android.myapplication.retrofit;
 
 import android.graphics.Bitmap;
 import android.net.Uri;
@@ -21,7 +21,7 @@ import retrofit.Callback;
 import retrofit.Response;
 
 
-public class JSONActivity extends AppCompatActivity {
+public class RetrofitActivity extends AppCompatActivity {
 
     ImageView imageView;
     TextView textView;

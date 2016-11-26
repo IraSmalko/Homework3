@@ -1,7 +1,6 @@
 package com.exemple.android.myapplication.listview;
 
 import android.app.Activity;
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.ListView;
@@ -9,16 +8,9 @@ import android.widget.ListView;
 import com.exemple.android.myapplication.recycler.MainActivity;
 import com.exemple.android.myapplication.recycler.OnItemClickListener;
 import com.exemple.android.myapplication.R;
-import com.exemple.android.myapplication.json.JSONActivity;
-import com.exemple.android.myapplication.retrofit.GitApiInterface;
-import com.exemple.android.myapplication.retrofit.GooglePlusApiInterface;
-import com.exemple.android.myapplication.retrofit.data.GithubUser;
-import com.exemple.android.myapplication.retrofit.data.GooglePlusUser;
+import com.exemple.android.myapplication.retrofit.RetrofitActivity;
 
 import java.util.ArrayList;
-
-import retrofit.Callback;
-import retrofit.Response;
 
 
 public class ListViewActivity extends Activity {
@@ -43,14 +35,14 @@ public class ListViewActivity extends Activity {
             @Override
             public void onItemClick(ListItem items) {
                 urlToPass = urlToPassGoogle = items.getGooglePlusUrl();
-                startActivity(new Intent(getApplicationContext(), JSONActivity.class));
+                startActivity(new Intent(getApplicationContext(), RetrofitActivity.class));
             }
         });
         adapter.setOnButtonClickListener(new OnItemClickListener() {
             @Override
             public void onItemClick(ListItem items) {
                 urlToPass = urlToPassGit = items.getGitUrl();
-                startActivity(new Intent(getApplicationContext(), JSONActivity.class));
+                startActivity(new Intent(getApplicationContext(), RetrofitActivity.class));
             }
         });
         mListView.setAdapter(adapter);

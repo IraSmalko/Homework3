@@ -76,7 +76,7 @@
 
     <string name="text">Введіть дані для створення нового контакту</string>
     <string name="name">name</string>
-    <string name="namber">namber</string>
+    <string name="number">number</string>
     <string name="create">create</string>
     <string name="contacts">contacts</string>
     <string name="newcontact">new Contact</string>
