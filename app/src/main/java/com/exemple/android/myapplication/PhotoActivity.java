@@ -16,36 +16,42 @@ import java.io.IOException;
 public class PhotoActivity extends AppCompatActivity {
     static final int GALLERY_REQUEST = 1;
     private final int CAMERA_RESULT = 0;
+    Bitmap bitmap = null;
+    ImageView imageView;
+    Bitmap restoreBitmap;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.photo_activity_view);
-        Button photo_fromGallery = (Button) findViewById(R.id.photo_fromGallery);
-        photo_fromGallery.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent photoPickerIntent = new Intent(Intent.ACTION_PICK);
-                photoPickerIntent.setType("image/*");
-                startActivityForResult(photoPickerIntent, GALLERY_REQUEST);
-            }
-        });
-        Button photo_fromCamera = (Button) findViewById(R.id.photo_fromCamera);
-        photo_fromCamera.setOnClickListener(new View.OnClickListener() {
+        if (savedInstanceState != null) {
+            restoreBitmap = savedInstanceState.getParcelable("bitmap");
+            imageView.setImageBitmap(restoreBitmap);
+        } else {
+            setContentView(R.layout.photo_activity_view);
+            Button photo_fromGallery = (Button) findViewById(R.id.photo_fromGallery);
+            photo_fromGallery.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent photoPickerIntent = new Intent(Intent.ACTION_PICK);
+                    photoPickerIntent.setType("image/*");
+                    startActivityForResult(photoPickerIntent, GALLERY_REQUEST);
+                }
+            });
+            Button photo_fromCamera = (Button) findViewById(R.id.photo_fromCamera);
+            photo_fromCamera.setOnClickListener(new View.OnClickListener() {
 
-            @Override
-            public void onClick(View v) {
-                Intent cameraIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-                startActivityForResult(cameraIntent, CAMERA_RESULT);
-            }
-        });
+                @Override
+                public void onClick(View v) {
+                    Intent cameraIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+                    startActivityForResult(cameraIntent, CAMERA_RESULT);
+                }
+            });
+        }
     }
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent imageReturnedIntent) {
         super.onActivityResult(requestCode, resultCode, imageReturnedIntent);
-
-        Bitmap bitmap = null;
-        ImageView imageView = (ImageView) findViewById(R.id.photo_imageView);
+        imageView = (ImageView) findViewById(R.id.photo_imageView);
 
         switch (requestCode) {
             case GALLERY_REQUEST:
@@ -67,17 +73,22 @@ public class PhotoActivity extends AppCompatActivity {
     }
 
     @Override
-    protected void onSaveInstanceState(Bundle saveInstanceState) {
-        super.onSaveInstanceState(saveInstanceState);
+    protected void onSaveInstanceState(Bundle outState) {
+        outState.putParcelable("bitmap", bitmap);
+        super.onSaveInstanceState(outState);
     }
 
     @Override
     protected void onRestoreInstanceState(Bundle savedInstanceState) {
+        Bitmap restoreBitmap = savedInstanceState.getParcelable("bitmap");
+        imageView.setImageBitmap(restoreBitmap);
         super.onRestoreInstanceState(savedInstanceState);
     }
 
     @Override
     protected void onDestroy() {
+
+
         super.onDestroy();
     }
 

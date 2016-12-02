@@ -12,6 +12,7 @@ import java.util.List;
 
 public class AllContactsAdapter extends RecyclerView.Adapter<AllContactsAdapter.ContactViewHolder>{
 
+
     private List<ContactVO> contactVOList;
     private Context mContext;
     public AllContactsAdapter(List<ContactVO> contactVOList, Context mContext){

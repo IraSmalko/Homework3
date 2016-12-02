@@ -17,7 +17,6 @@ public class ListViewActivity extends Activity {
     private static ArrayList<ListItem> items = new ArrayList<>();
     private ListView mListView;
     private CustomListViewAdapter adapter;
-    private static String urlToPass;
     private static String urlToPassGit;
     private static String urlToPassGoogle;
 
@@ -34,40 +33,25 @@ public class ListViewActivity extends Activity {
         adapter.setOnItemClickListener(new OnItemClickListener() {
             @Override
             public void onItemClick(ListItem items) {
-                urlToPass = urlToPassGoogle = items.getGooglePlusUrl();
+                urlToPassGoogle = items.getGooglePlusUrl();
                 startActivity(new Intent(getApplicationContext(), RetrofitActivity.class));
             }
         });
         adapter.setOnButtonClickListener(new OnItemClickListener() {
             @Override
             public void onItemClick(ListItem items) {
-                urlToPass = urlToPassGit = items.getGitUrl();
+                urlToPassGit = items.getGitUrl();
                 startActivity(new Intent(getApplicationContext(), RetrofitActivity.class));
             }
         });
         mListView.setAdapter(adapter);
     }
-    public static String getUrlToPass() { return urlToPass;  }
 
     public static String getUrlToPassGit() {
         return urlToPassGit;
     }
+
     public static String getUrlToPassGoogle() {
         return urlToPassGoogle;
-    }
-
-    @Override
-    protected void onSaveInstanceState(Bundle saveInstanceState) {
-        super.onSaveInstanceState(saveInstanceState);
-    }
-
-    @Override
-    protected void onRestoreInstanceState(Bundle savedInstanceState) {
-        super.onRestoreInstanceState(savedInstanceState);
-    }
-
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
     }
 }

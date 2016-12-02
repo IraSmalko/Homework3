@@ -6,7 +6,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Чекай"
+        android:text="@string/txtjson"
         android:id="@+id/Json"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true" />
@@ -17,6 +17,6 @@
         android:id="@+id/Json_imageView"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="56dp"
-        />
+        android:contentDescription="@string/ingjson" />
 
 </RelativeLayout>

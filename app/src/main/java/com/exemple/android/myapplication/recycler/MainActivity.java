@@ -2,9 +2,16 @@ package com.exemple.android.myapplication.recycler;
 
 import android.content.BroadcastReceiver;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.net.Uri;
 import android.os.Bundle;
+import android.provider.Settings;
+import android.support.v4.app.ActivityCompat;
+import android.support.v4.app.LoaderManager;
+import android.support.v4.content.Loader;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -15,22 +22,25 @@ import android.widget.Toast;
 import com.exemple.android.myapplication.PhotoActivity;
 import com.exemple.android.myapplication.R;
 import com.exemple.android.myapplication.contacts.AllContacts;
+import com.exemple.android.myapplication.contacts.ContactVO;
 import com.exemple.android.myapplication.contacts.NewContactUsing;
 import com.exemple.android.myapplication.retrofit.RetrofitActivity;
 import com.exemple.android.myapplication.listview.ListItem;
 import com.exemple.android.myapplication.listview.ListViewActivity;
 
 import java.util.ArrayList;
+import java.util.List;
+
+import static android.Manifest.permission.READ_CONTACTS;
+import static android.content.pm.PackageManager.PERMISSION_GRANTED;
 
 public class MainActivity extends AppCompatActivity {
 
     private RecyclerView mRecyclerView;
     private MyAdapter adapter;
     private static ArrayList<ListItem> items = new ArrayList<>();
-    private OnMenuItemClickListener onMenuItemClickListener;
     private static String urlToPassGit;
     private static String urlToPassGoogle;
-    private static String urlToPass;
     private HeadSetReceiver myReceiver;
 
     public static String getUrlToPassGit() {
@@ -47,18 +57,6 @@ public class MainActivity extends AppCompatActivity {
 
     public static void setUrlToPassGoogle(String url) {
         urlToPassGoogle = url;
-    }
-
-    public static String getUrlToPass() {
-        return urlToPass;
-    }
-
-    public static void setUrlToPass(String url) {
-        urlToPass = url;
-    }
-
-    public void setOnMenuItemClickListener(OnMenuItemClickListener onMenuItemClickListener) {
-        this.onMenuItemClickListener = onMenuItemClickListener;
     }
 
     @Override
@@ -126,7 +124,7 @@ public class MainActivity extends AppCompatActivity {
         adapter.setOnItemClickListener(new OnItemClickListener() {
             @Override
             public void onItemClick(ListItem items) {
-                urlToPass = urlToPassGoogle = items.getGooglePlusUrl();
+                urlToPassGoogle = items.getGooglePlusUrl();
                 startActivity(new Intent(getApplicationContext(), RetrofitActivity.class));
             }
         });
@@ -134,14 +132,8 @@ public class MainActivity extends AppCompatActivity {
         adapter.setOnButtonClickListener(new OnItemClickListener() {
             @Override
             public void onItemClick(ListItem items) {
-                urlToPass = urlToPassGit = items.getGitUrl();
+                urlToPassGit = items.getGitUrl();
                 startActivity(new Intent(getApplicationContext(), RetrofitActivity.class));
-            }
-        });
-
-        setOnMenuItemClickListener(new OnMenuItemClickListener() {
-            @Override
-            public void onMenuItemClick() {
             }
         });
     }
@@ -160,7 +152,6 @@ public class MainActivity extends AppCompatActivity {
                 if (state == 1) {
                     {
                         Toast.makeText(context, "Headset plugged", Toast.LENGTH_SHORT).show();
-
                     }
                 }
             }
