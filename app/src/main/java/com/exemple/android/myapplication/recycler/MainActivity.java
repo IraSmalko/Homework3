@@ -39,25 +39,7 @@ public class MainActivity extends AppCompatActivity {
     private RecyclerView mRecyclerView;
     private MyAdapter adapter;
     private static ArrayList<ListItem> items = new ArrayList<>();
-    private static String urlToPassGit;
-    private static String urlToPassGoogle;
     private HeadSetReceiver myReceiver;
-
-    public static String getUrlToPassGit() {
-        return urlToPassGit;
-    }
-
-    public static void setUrlToPassGit(String url) {
-        urlToPassGit = url;
-    }
-
-    public static String getUrlToPassGoogle() {
-        return urlToPassGoogle;
-    }
-
-    public static void setUrlToPassGoogle(String url) {
-        urlToPassGoogle = url;
-    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -124,16 +106,18 @@ public class MainActivity extends AppCompatActivity {
         adapter.setOnItemClickListener(new OnItemClickListener() {
             @Override
             public void onItemClick(ListItem items) {
-                urlToPassGoogle = items.getGooglePlusUrl();
-                startActivity(new Intent(getApplicationContext(), RetrofitActivity.class));
+                Intent intent = new Intent(getApplicationContext(), RetrofitActivity.class);
+                intent.putExtra("urlToPassGoogle", items.getGooglePlusUrl());//urlToPassGoogle = items.getGooglePlusUrl();
+                startActivity(intent);
             }
         });
 
         adapter.setOnButtonClickListener(new OnItemClickListener() {
             @Override
             public void onItemClick(ListItem items) {
-                urlToPassGit = items.getGitUrl();
-                startActivity(new Intent(getApplicationContext(), RetrofitActivity.class));
+                Intent intent = new Intent(getApplicationContext(), RetrofitActivity.class);
+                intent.putExtra("urlToPassGit", items.getGitUrl());
+                startActivity(intent);
             }
         });
     }

@@ -17,8 +17,6 @@ public class ListViewActivity extends Activity {
     private static ArrayList<ListItem> items = new ArrayList<>();
     private ListView mListView;
     private CustomListViewAdapter adapter;
-    private static String urlToPassGit;
-    private static String urlToPassGoogle;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,25 +31,20 @@ public class ListViewActivity extends Activity {
         adapter.setOnItemClickListener(new OnItemClickListener() {
             @Override
             public void onItemClick(ListItem items) {
-                urlToPassGoogle = items.getGooglePlusUrl();
-                startActivity(new Intent(getApplicationContext(), RetrofitActivity.class));
+                Intent intent = new Intent(getApplicationContext(), RetrofitActivity.class);
+                intent.putExtra("urlToPassGoogle", items.getGooglePlusUrl());
+                startActivity(intent);
             }
         });
         adapter.setOnButtonClickListener(new OnItemClickListener() {
             @Override
             public void onItemClick(ListItem items) {
-                urlToPassGit = items.getGitUrl();
-                startActivity(new Intent(getApplicationContext(), RetrofitActivity.class));
+                Intent intent = new Intent(getApplicationContext(), RetrofitActivity.class);
+                intent.putExtra("urlToPassGit", items.getGitUrl());
+                startActivity(intent);
             }
         });
         mListView.setAdapter(adapter);
     }
 
-    public static String getUrlToPassGit() {
-        return urlToPassGit;
-    }
-
-    public static String getUrlToPassGoogle() {
-        return urlToPassGoogle;
-    }
 }

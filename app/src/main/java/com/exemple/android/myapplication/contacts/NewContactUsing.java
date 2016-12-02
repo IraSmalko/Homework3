@@ -14,7 +14,7 @@ import com.exemple.android.myapplication.R;
 import java.util.ArrayList;
 
 public class NewContactUsing extends Activity {
-   private EditText name;
+    private EditText name;
     private EditText phoneNumber;
 
     @Override
@@ -24,10 +24,12 @@ public class NewContactUsing extends Activity {
         name = (EditText) findViewById(R.id.name);
         phoneNumber = (EditText) findViewById(R.id.phone);
     }
+
     public void onClickW(View v) {
         addAsContactAutomatic();
     }
-    public  void addAsContactAutomatic() {
+
+    public void addAsContactAutomatic() {
 
         String nameValue = name.getText().toString();
         String phoneNumberValue = phoneNumber.getText().toString();
