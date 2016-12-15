@@ -1,70 +1,5 @@
 <resources>
-    <string name="app_name">My Application</string>
-    <string name="name1">Винник Владислав</string>
-    <string name="name2">Теплий Михайло</string>
-    <string name="name3">Рибак Богдан</string>
-    <string name="name4">Лещенко Иван</string>
-    <string name="name5">Сакуров Павло</string>
-    <string name="name6">Воловик Руслан</string>
-    <string name="name7">Кириченко Дар\'я</string>
-    <string name="name8">Рябко Андрій</string>
-    <string name="name9">Ситник Євгеній</string>
-    <string name="name10">Химич Эдгар</string>
-    <string name="name11">Бочкарьова Альона</string>
-    <string name="name12">Мигаль Руслан</string>
-    <string name="name13">Смалько Ірина</string>
-    <string name="name14">Губський Валерій</string>
-    <string name="name15">Жданов Євген</string>
-    <string name="name16">Сергеенко Иван</string>
-    <string name="name17">Пахаренко Ігор</string>
-    <string name="name18">Сторчак Олександр</string>
-    <string name="name19">Піхманець Микола</string>
-    <string name="name20">Лимарь Володимир</string>
-    <string name="hello_world">hello_world</string>
-
-    <string name="gplus1">117765348335292685488</string>
-    <string name="gplus2">110313151428733681846</string>
-    <string name="gplus3">103145064185261665176</string>
-    <string name="gplus4">111088051831122657934</string>
-    <string name="gplus5">108482088578879737406</string>
-    <string name="gplus6">109719711261293841416</string>
-    <string name="gplus7">103130382244571139113</string>
-    <string name="gplus8">110288437168771810002</string>
-    <string name="gplus9">101427598085441575303</string>
-    <string name="gplus10">102197104589432395674</string>
-    <string name="gplus11">107382407687723634701</string>
-    <string name="gplus12">106331812587299981536</string>
-    <string name="gplus13">113994208318508685327</string>
-    <string name="gplus14">107910188078571144657</string>
-    <string name="gplus15">113264746064942658029</string>
-    <string name="gplus16">111389859649705526831</string>
-    <string name="gplus17">108231952557339738781</string>
-    <string name="gplus18">106553086375805780685</string>
-    <string name="gplus19">110087894894730430086</string>
-    <string name="gplus20">109227554979939957830</string>
-
     <string name="git">git</string>
-
-     <string name="gitUrl1">vlads0n</string>
-    <string name="gitUrl2">RedGeekPanda</string>
-    <string name="gitUrl3">BogdanRybak1996</string>
-    <string name="gitUrl4">ivleshch</string>
-    <string name="gitUrl5">sakurov</string>
-    <string name="gitUrl6">RuslanVolovyk</string>
-    <string name="gitUrl7">dashakdsr</string>
-    <string name="gitUrl8">RyabkoAndrew</string>
-    <string name="gitUrl9">YevheniiSytnyk</string>
-    <string name="gitUrl10">lyfm</string>
-    <string name="gitUrl11">HelenCool</string>
-    <string name="gitUrl12">rmigal</string>
-    <string name="gitUrl13">IraSmalko</string>
-    <string name="gitUrl14">gvv-ua</string>
-    <string name="gitUrl15">zhdanov-ek</string>
-    <string name="gitUrl16">dogfight81</string>
-    <string name="gitUrl17">IhorPakharenko</string>
-    <string name="gitUrl18">new15</string>
-    <string name="gitUrl19">NikPikhmanets</string>
-    <string name="gitUrl20">VovanNec</string>
 
     <string name="action">action</string>
     <string name="listView">listView</string>
@@ -85,4 +20,5 @@
 
     <string name="read_contacts_err">Дозвіл на читання контактів не надано.</string>
     <string name="go_to_settings">Перейти в налаштування</string>
+
 </resources>
