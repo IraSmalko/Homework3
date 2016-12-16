@@ -6,7 +6,6 @@ import android.content.IntentFilter;
 import android.os.Bundle;
 import android.support.v4.view.MenuItemCompat;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.SearchView;
 import android.view.Menu;
@@ -80,6 +79,9 @@ public class MainActivity extends AppCompatActivity implements SearchView.OnQuer
         realm = Realm.getDefaultInstance();
         results = realm.where(ListItem.class).findAll();
 
+        if (results.size() == 0) {
+            addStudent();
+        }
         adapter = new MyAdapter(results);
         mRecyclerView.setAdapter(adapter);
 
