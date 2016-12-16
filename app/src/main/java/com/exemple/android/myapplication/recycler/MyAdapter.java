@@ -8,7 +8,7 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.exemple.android.myapplication.R;
-import com.exemple.android.myapplication.listview.ListItem;
+import com.exemple.android.myapplication.realm.ListItem;
 
 import java.util.List;
 
@@ -20,6 +20,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.CustomViewHolder> 
 
     public MyAdapter(List<ListItem> items) {
         this.items = items;
+        setHasStableIds(true);
     }
 
     public OnItemClickListener getOnItemClickListener() {
@@ -35,21 +36,15 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.CustomViewHolder> 
     }
 
     @Override
+    public long getItemId(int position) {
+        return items.get(position).getId();
+    }
+
+    @Override
     public CustomViewHolder onCreateViewHolder(ViewGroup viewGroup, int i) {
         View view = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.item_view, viewGroup, false);
         CustomViewHolder viewHolder = new CustomViewHolder(view);
         return viewHolder;
-    }
-
-    class CustomViewHolder extends RecyclerView.ViewHolder {
-        protected TextView nameTextView;
-        protected Button gitButton;
-
-        public CustomViewHolder(View view) {
-            super(view);
-            this.nameTextView = (TextView) view.findViewById(R.id.name);
-            this.gitButton = (Button) view.findViewById(R.id.git);
-        }
     }
 
     @Override
@@ -79,5 +74,18 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.CustomViewHolder> 
     public int getItemCount() {
         return (null != items ? items.size() : 0);
     }
+
+    class CustomViewHolder extends RecyclerView.ViewHolder {
+        private TextView nameTextView;
+        private Button gitButton;
+
+        public CustomViewHolder(View view) {
+            super(view);
+            this.nameTextView = (TextView) view.findViewById(R.id.name);
+            this.gitButton = (Button) view.findViewById(R.id.git);
+        }
+    }
+
+
 }
 

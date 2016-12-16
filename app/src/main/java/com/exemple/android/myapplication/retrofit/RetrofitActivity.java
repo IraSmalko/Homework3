@@ -10,8 +10,6 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.exemple.android.myapplication.R;
-import com.exemple.android.myapplication.listview.ListViewActivity;
-import com.exemple.android.myapplication.recycler.MainActivity;
 import com.exemple.android.myapplication.retrofit.data.GithubUser;
 import com.exemple.android.myapplication.retrofit.data.GooglePlusUser;
 

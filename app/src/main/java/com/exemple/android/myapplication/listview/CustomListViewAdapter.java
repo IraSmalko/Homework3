@@ -8,13 +8,16 @@ import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.exemple.android.myapplication.realm.ListItem;
 import com.exemple.android.myapplication.recycler.OnItemClickListener;
 import com.exemple.android.myapplication.R;
 
 import java.util.ArrayList;
 
+import io.realm.RealmResults;
+
 public class CustomListViewAdapter extends BaseAdapter {
-    private static ArrayList<ListItem> listItems;
+    private static RealmResults<ListItem> listItems;
 
     private LayoutInflater mInflater;
     private OnItemClickListener onItemClickListener;
@@ -36,7 +39,7 @@ public class CustomListViewAdapter extends BaseAdapter {
         this.onButtonClickListener = onButtonClickListener;
     }
 
-    public CustomListViewAdapter(Context context, ArrayList<ListItem> results) {
+    public CustomListViewAdapter(Context context, RealmResults<ListItem> results) {
         listItems = results;
         mInflater = LayoutInflater.from(context);
     }

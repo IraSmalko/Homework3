@@ -5,16 +5,19 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.widget.ListView;
 
-import com.exemple.android.myapplication.recycler.MainActivity;
-import com.exemple.android.myapplication.recycler.OnItemClickListener;
 import com.exemple.android.myapplication.R;
+import com.exemple.android.myapplication.realm.ListItem;
+import com.exemple.android.myapplication.recycler.OnItemClickListener;
 import com.exemple.android.myapplication.retrofit.RetrofitActivity;
 
 import java.util.ArrayList;
 
+import io.realm.Realm;
+import io.realm.RealmResults;
+
 
 public class ListViewActivity extends Activity {
-    private static ArrayList<ListItem> items = new ArrayList<>();
+   // private static ArrayList<ListItem> items = new ArrayList<>();
     private ListView mListView;
     private CustomListViewAdapter adapter;
 
@@ -22,32 +25,26 @@ public class ListViewActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.list_activity_view);
-
-        String[] array1 = getResources().getStringArray(R.array.name);
-        String[] array2 = getResources().getStringArray(R.array.googlePlusUrl);
-        String[] array3 = getResources().getStringArray(R.array.gitUrl);
-
-        for (int i = 0; i < array1.length; i++) {
-            items.add(new ListItem(getResources().getStringArray(R.array.name)[i], array2[i], "git", array3[i]));
-        }
+        Realm realm = Realm.getDefaultInstance();
+        RealmResults<ListItem> results = realm.where(ListItem.class).findAll();
 
         mListView = (ListView) findViewById(R.id.list_activity_view);
 
-        adapter = new CustomListViewAdapter(getApplicationContext(), items);
+        adapter = new CustomListViewAdapter(getApplicationContext(), results);
 
         adapter.setOnItemClickListener(new OnItemClickListener() {
             @Override
-            public void onItemClick(ListItem items) {
+            public void onItemClick(ListItem results) {
                 Intent intent = new Intent(getApplicationContext(), RetrofitActivity.class);
-                intent.putExtra("urlToPassGoogle", items.getGooglePlusUrl());
+                intent.putExtra("urlToPassGoogle", results.getGooglePlusUrl());
                 startActivity(intent);
             }
         });
         adapter.setOnButtonClickListener(new OnItemClickListener() {
             @Override
-            public void onItemClick(ListItem items) {
+            public void onItemClick(ListItem results) {
                 Intent intent = new Intent(getApplicationContext(), RetrofitActivity.class);
-                intent.putExtra("urlToPassGit", items.getGitUrl());
+                intent.putExtra("urlToPassGit", results.getGitUrl());
                 startActivity(intent);
             }
         });
@@ -57,7 +54,7 @@ public class ListViewActivity extends Activity {
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        items.clear();
+//        items.clear();
     }
 
 }

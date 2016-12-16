@@ -13,7 +13,7 @@ import com.exemple.android.myapplication.R;
 
 import java.util.ArrayList;
 
-public class NewContactUsing extends Activity {
+public class NewContactUsingActivity extends Activity {
     private EditText name;
     private EditText phoneNumber;
 

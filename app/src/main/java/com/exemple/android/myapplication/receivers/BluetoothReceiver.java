@@ -8,10 +8,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.widget.Toast;
 
-import com.exemple.android.myapplication.listview.ListItem;
-
-import java.util.ArrayList;
-
 public class BluetoothReceiver extends BroadcastReceiver {
     @Override
     public void onReceive(Context context, Intent intent) {

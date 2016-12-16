@@ -1,12 +1,15 @@
-package com.exemple.android.myapplication.listview;
+package com.exemple.android.myapplication.realm;
 
-public class ListItem {
+import io.realm.RealmObject;
 
+public class ListItem extends RealmObject {
+
+    private int id;
     private String name;
     private String googlePlusUrl;
     private String git;
     private String gitUrl;
-
+    private String searchName;
 
     public ListItem(String name, String googlePlusUrl, String git, String gitUrl) {
         this.name = name;
@@ -14,13 +17,29 @@ public class ListItem {
         this.gitUrl = gitUrl;
         this.git = git;
     }
-    public String getGit() { return git;  }
+
+    public ListItem() {
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public String getGit() {
+        return git;
+    }
 
     public void setGit(String git) {
         this.git = git;
     }
 
-    public String getGitUrl() { return gitUrl;  }
+    public String getGitUrl() {
+        return gitUrl;
+    }
 
     public void setGitUrl(String gitUrl) {
         this.gitUrl = gitUrl;
@@ -40,5 +59,13 @@ public class ListItem {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public String getSearchName() {
+        return searchName;
+    }
+
+    public void setSearchName(String searchName) {
+        this.searchName = searchName.toLowerCase();
     }
 }
