@@ -9,6 +9,7 @@ import android.content.Intent;
 import android.widget.Toast;
 
 public class BluetoothReceiver extends BroadcastReceiver {
+
     @Override
     public void onReceive(Context context, Intent intent) {
         String action = intent.getAction();

@@ -10,6 +10,7 @@ import android.widget.TextView;
 import com.exemple.android.myapplication.R;
 import com.exemple.android.myapplication.realm.ListItem;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class MyAdapter extends RecyclerView.Adapter<MyAdapter.CustomViewHolder> {
@@ -20,24 +21,22 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.CustomViewHolder> 
 
     public MyAdapter(List<ListItem> items) {
         this.items = items;
-        setHasStableIds(true);
     }
 
     public OnItemClickListener getOnItemClickListener() {
         return onItemClickListener;
     }
-    public OnItemClickListener getOnButtonClickListener() {return onButtonClickListener;}
+
+    public OnItemClickListener getOnButtonClickListener() {
+        return onButtonClickListener;
+    }
 
     public void setOnItemClickListener(OnItemClickListener onItemClickListener) {
         this.onItemClickListener = onItemClickListener;
     }
-    public void setOnButtonClickListener (OnItemClickListener onButtonClickListener){
-        this.onButtonClickListener = onButtonClickListener;
-    }
 
-    @Override
-    public long getItemId(int position) {
-        return items.get(position).getId();
+    public void setOnButtonClickListener(OnItemClickListener onButtonClickListener) {
+        this.onButtonClickListener = onButtonClickListener;
     }
 
     @Override
@@ -86,6 +85,10 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.CustomViewHolder> 
         }
     }
 
-
+    public void setFilter(ArrayList<ListItem> newList) {
+        items = new ArrayList<>();
+        items.addAll(newList);
+        notifyDataSetChanged();
+    }
 }
 

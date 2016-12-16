@@ -8,18 +8,19 @@ import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.exemple.android.myapplication.R;
 import com.exemple.android.myapplication.realm.ListItem;
 import com.exemple.android.myapplication.recycler.OnItemClickListener;
-import com.exemple.android.myapplication.R;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import io.realm.RealmResults;
 
 public class CustomListViewAdapter extends BaseAdapter {
-    private static RealmResults<ListItem> listItems;
 
-    private LayoutInflater mInflater;
+    private List<ListItem> listItems;
+    private LayoutInflater inflater;
     private OnItemClickListener onItemClickListener;
     private OnItemClickListener onButtonClickListener;
 
@@ -41,7 +42,7 @@ public class CustomListViewAdapter extends BaseAdapter {
 
     public CustomListViewAdapter(Context context, RealmResults<ListItem> results) {
         listItems = results;
-        mInflater = LayoutInflater.from(context);
+        inflater = LayoutInflater.from(context);
     }
 
     public int getCount() {
@@ -61,7 +62,7 @@ public class CustomListViewAdapter extends BaseAdapter {
 
         CustomViewHolder customViewHolder;
         if (convertView == null) {
-            convertView = mInflater.inflate(R.layout.list_item_view, null);
+            convertView = inflater.inflate(R.layout.list_item_view, null);
             customViewHolder = new CustomViewHolder();
             customViewHolder.name = (TextView) convertView.findViewById(R.id.name);
             customViewHolder.gitButton = (Button) convertView.findViewById(R.id.git);
@@ -96,5 +97,11 @@ public class CustomListViewAdapter extends BaseAdapter {
     static class CustomViewHolder {
         TextView name;
         Button gitButton;
+    }
+
+    public void setFilter(ArrayList<ListItem> newList) {
+        listItems = new ArrayList<>();
+        listItems.addAll(newList);
+        notifyDataSetChanged();
     }
 }

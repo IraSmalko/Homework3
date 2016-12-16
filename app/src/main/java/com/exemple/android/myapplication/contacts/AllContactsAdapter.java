@@ -14,15 +14,15 @@ public class AllContactsAdapter extends RecyclerView.Adapter<AllContactsAdapter.
 
 
     private List<ContactVO> contactVOList;
-    private Context mContext;
+    private Context context;
     public AllContactsAdapter(List<ContactVO> contactVOList, Context mContext){
         this.contactVOList = contactVOList;
-        this.mContext = mContext;
+        this.context = mContext;
     }
 
     @Override
     public ContactViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(mContext).inflate(R.layout.single_contact_view, null);
+        View view = LayoutInflater.from(context).inflate(R.layout.single_contact_view, null);
         ContactViewHolder contactViewHolder = new ContactViewHolder(view);
         return contactViewHolder;
     }

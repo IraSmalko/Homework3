@@ -1,22 +1,22 @@
 package com.exemple.android.myapplication.contacts;
 
 public class ContactVO {
-    private String ContactName;
-    private String ContactNumber;
+    private String contactName;
+    private String contactNumber;
 
     public String getContactName() {
-        return ContactName;
+        return contactName;
     }
 
     public void setContactName(String contactName) {
-        ContactName = contactName;
+        this.contactName = contactName;
     }
 
     public String getContactNumber() {
-        return ContactNumber;
+        return contactNumber;
     }
 
     public void setContactNumber(String contactNumber) {
-        ContactNumber = contactNumber;
+        this.contactNumber = contactNumber;
     }
 }

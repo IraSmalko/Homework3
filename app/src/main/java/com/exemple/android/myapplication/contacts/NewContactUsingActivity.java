@@ -5,6 +5,7 @@ import android.app.Activity;
 import android.content.ContentProviderOperation;
 import android.os.Bundle;
 import android.provider.ContactsContract;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -13,7 +14,7 @@ import com.exemple.android.myapplication.R;
 
 import java.util.ArrayList;
 
-public class NewContactUsingActivity extends Activity {
+public class NewContactUsingActivity extends AppCompatActivity {
     private EditText name;
     private EditText phoneNumber;
 

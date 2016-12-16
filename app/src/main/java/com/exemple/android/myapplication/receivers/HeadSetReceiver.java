@@ -8,6 +8,7 @@ import android.widget.Toast;
 
 
 public class HeadSetReceiver extends BroadcastReceiver {
+
     @Override
     public void onReceive(Context context, Intent intent) {
         if (intent.getAction().equals(Intent.ACTION_HEADSET_PLUG)) {

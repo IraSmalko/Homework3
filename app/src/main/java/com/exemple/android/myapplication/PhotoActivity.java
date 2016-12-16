@@ -77,19 +77,4 @@ public class PhotoActivity extends AppCompatActivity {
         outState.putParcelable("bitmap", bitmap);
         super.onSaveInstanceState(outState);
     }
-
-    @Override
-    protected void onRestoreInstanceState(Bundle savedInstanceState) {
-        Bitmap restoreBitmap = savedInstanceState.getParcelable("bitmap");
-        imageView.setImageBitmap(restoreBitmap);
-        super.onRestoreInstanceState(savedInstanceState);
-    }
-
-    @Override
-    protected void onDestroy() {
-
-
-        super.onDestroy();
-    }
-
 }

@@ -4,30 +4,10 @@ import io.realm.RealmObject;
 
 public class ListItem extends RealmObject {
 
-    private int id;
     private String name;
     private String googlePlusUrl;
     private String git;
     private String gitUrl;
-    private String searchName;
-
-    public ListItem(String name, String googlePlusUrl, String git, String gitUrl) {
-        this.name = name;
-        this.googlePlusUrl = googlePlusUrl;
-        this.gitUrl = gitUrl;
-        this.git = git;
-    }
-
-    public ListItem() {
-    }
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
 
     public String getGit() {
         return git;
@@ -59,13 +39,5 @@ public class ListItem extends RealmObject {
 
     public void setName(String name) {
         this.name = name;
-    }
-
-    public String getSearchName() {
-        return searchName;
-    }
-
-    public void setSearchName(String searchName) {
-        this.searchName = searchName.toLowerCase();
     }
 }

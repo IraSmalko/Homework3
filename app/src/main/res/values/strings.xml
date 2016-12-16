@@ -22,6 +22,7 @@
 
     <string name="read_contacts_err">Дозвіл на читання контактів не надано.</string>
     <string name="go_to_settings">Перейти в налаштування</string>
+    <string name="search_hint">search</string>
 
 
 </resources>
